@@ -1,0 +1,54 @@
+tarea #1
+Cazarez Ibarra Francisco Javier
+Ríos Sauceda Jose Lorenzo
+
+creación de la clase nodo que recibe un dato de cualquier tipo y una variable para cada hijo posible del nodo
+class Nodo:
+    def __init__(self, dato):
+        self.dato = dato
+        self.izquierda = None
+        self.derecha = None
+
+creación de la clase arbol donde se puede inicializar el arbol con o sin raíz dependiendo si recibe un dato para crearla class Arbol:
+    def __init__(self, dato):
+        self.raiz = Nodo(dato)
+    
+    def __init__(self):
+        self.raiz = None
+
+método insertar: consiste en que si la raíz esta vacía le asigna un nodo si no pregunta si el dato que esta en la raíz es menor que el dato a insertar si, si avanza al nodo de la izquierda o encaso contrario a la derecha y aplica recursividad  
+
+def __insertar_recursivo(self, nodo, dato):
+        if self.raiz is None:
+                self.raiz = Nodo(dato)
+        else:
+            if dato < nodo.dato:
+                if nodo.izquierda is None:
+                    nodo.izquierda = Nodo(dato)
+                else:
+                    self.__insertar_recursivo(nodo.izquierda, dato)
+            else:
+                if nodo.derecha is None:
+                    nodo.derecha = Nodo(dato)
+                else:
+                    self.__insertar_recursivo(nodo.derecha, dato)
+
+método preorden: consiste en traer la raíz luego su decendencia izquierda y por ultimo la derecha (en la clase Arbol se implementa también inorden y postorden)
+
+def __preorden_recursivo(self, nodo):
+        if nodo is not None:
+            print(nodo.dato, end=", ")
+            self.__preorden_recursivo(nodo.izquierda)
+            self.__preorden_recursivo(nodo.derecha)
+
+método buscar: consiste en recorrer el arbol iniciando por la raíz, en caso de que el dato que se busca es mayor va a la derecha y si no va a la izquierda
+
+def __buscar(self, nodo, busqueda):
+        if nodo is None:
+            return None
+        if nodo.dato == busqueda:
+            return nodo
+        if busqueda < nodo.dato:
+            return self.__buscar(nodo.izquierda, busqueda)
+        else:
+            return self.__buscar(nodo.derecha, busqueda)
